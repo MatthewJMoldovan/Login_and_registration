@@ -45,12 +45,12 @@ class User:
         is_valid = True
         found_user = cls.get_user_by_email(form['email'])
         if not cls.get_user_by_email(form['email']):
-            return False
             flash('Invalid Login!')
+            return False
         else: 
             if not BCRPYT.check_password_hash(found_user.password, form['password']):
-                return False
                 flash("Invalid Login!")
+                return False
         return found_user
 
     @staticmethod
